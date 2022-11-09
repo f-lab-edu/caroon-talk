@@ -1,10 +1,7 @@
 # caroon-talk
 
-Vanilla JS와 TS를 기반으로한 SPA(Single Page Application) 방식의 채팅 어플리케이션
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+Vanilla JS와 TS를 기반으로한 SPA(Single Page Application) 방식의 채팅 어플리케이션
 
 React를 사용하지 않은 상태로 순수 JS와 TS를 이용한 SPA 방식을 직접 구현할 예정입니다.
 
@@ -20,11 +17,15 @@ json-server을 이용한 간단한 서버를 통한 상호작용 예정
 
 ## 개발환경
 
-`npm 8.14.0`
+* npm 8.14.0
 
-`ES6`
+* ES6
 
-`webpack & babel`
+* webpack & babel 
+
+* eslint & prettier
+
+* json-server
 
 ## 업데이트 내역
 
