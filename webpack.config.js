@@ -1,47 +1,106 @@
-// webpack.config.js
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const mode = process.env.NODE_ENV || "development";
+
 module.exports = {
-  entry: "./src/index.ts", // 번들링 시작 위치
+  mode: 'production', // or production
+  entry: './src/index.ts', // 초기 파일 경로
   output: {
-    path: path.join(__dirname, "/dist"), // 번들 결과물 위치
-    filename: "bundle.js",
+    filename: 'bundle.js', // js 파일 이름 설정
+    path: path.resolve('./dist'), // 빌드 결과물을 생성할 경로(절대경로)
+    assetModuleFilename: 'assets/[name][ext]', // asset 폴더에 있던 파일들은 dist 내부에 asset 폴더 생성후 이름과 확장자를 그대로 사용하여 저장
+    clean: true, // 빌드 이전 결과물 제거
   },
   module: {
     rules: [
       {
-        test: /[\.js]$/, // .js 에 한하여 babel-loader를 이용하여 transpiling
-        exclude: /node_module/,
-        use: {
-          loader: "babel-loader",
-        },
+        'prettier/prettier': [
+          'error',
+          {
+            endOfLine: 'auto',
+          },
+        ],
       },
       {
-        test: /\.ts$/, // .ts 에 한하여 ts-loader를 이용하여 transpiling
-        exclude: /node_module/,
-        use: {
-          loader: "ts-loader",
+        test: /\.ts$/,
+        exclude: /node_modules/, // node_mudules를 제외한다.
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.(sass|scss|css)$/, // 확장자가 scss, css인 모든 파일
+        use: ['style-loader', 'css-loader', 'sass-loader'], // 배열의 역순으로 로더가 동작. scss파일을 css파일로 컴파일 -> css-loader를 적용해 모듈화 -> 동적으로 돔에 추가
+      },
+      {
+        test: /\.(png|jpg|svg|gif)$/,
+        type: 'asset', // resource와 inline 중에서 자동으로 선택
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024, // 크기가 4kb 미만인 파일은 inline 모듈로 처리되고 그렇지 않으면 resource 모듈로 처리
+          },
         },
       },
     ],
   },
-  resolve: {
-    modules: [path.join(__dirname, "src"), "node_modules"], // 모듈 위치
-    extensions: [".ts", ".js"],
-  },
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // 템플릿 위치
+      template: './src/index.html', // 템플릿 위치
     }),
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
-  },
-  devServer: {
-    host: "localhost", // live-server host 및 port
-    port: 5500,
-  },
-  mode: "development", // 번들링 모드 development / production
 };
+
+// // webpack.config.js
+// const path = require("path");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const TerserPlugin = require("terser-webpack-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// module.exports = {
+//   entry: "./src/index.ts", // 번들링 시작 위치
+//   output: {
+//     path: path.join(__dirname, "/dist"), // 번들 결과물 위치
+//     filename: "bundle.js",
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /[\.js]$/, // .js 에 한하여 babel-loader를 이용하여 transpiling
+//         exclude: /node_module/,
+//         use: {
+//           loader: "babel-loader",
+//         },
+//       },
+//       {
+//         test: /\.ts$/, // .ts 에 한하여 ts-loader를 이용하여 transpiling
+//         exclude: /node_module/,
+//         use: {
+//           loader: "ts-loader",
+//         },
+//       },
+//       {
+//         test: /\.css$/,
+//         use: ["style-loader", "css-loader"],
+//       },
+//     ],
+//   },
+//   resolve: {
+//     modules: [path.join(__dirname, "src"), "node_modules"], // 모듈 위치
+//     extensions: [".ts", ".js", ".css"],
+//   },
+//   plugins: [
+//     new HtmlWebpackPlugin({
+//       template: "./src/index.html", // 템플릿 위치
+//     }),
+
+//     new MiniCssExtractPlugin({ filename: "css/style.css" }),
+//   ],
+//   optimization: {
+//     minimize: true,
+//     minimizer: [new TerserPlugin()],
+//   },
+//   devServer: {
+//     host: "localhost", // live-server host 및 port
+//     port: 5500,
+//     hot: true,
+//   },
+//   mode: "development", // 번들링 모드 development / production
+// };
