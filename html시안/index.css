@@ -132,12 +132,13 @@
   position: relative;
 }
 
-.chat-input input {
+.chat-input textarea {
   position: absolute;
   width: 80%;
   height: 100%;
   border: none;
   right: 0;
+  resize: none;
 }
 
 .my-chat {
