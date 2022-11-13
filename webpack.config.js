@@ -57,14 +57,14 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   'prettier/prettier': [
-      //     'error',
-      //     {
-      //       endOfLine: 'auto',
-      //     },
-      //   ],
-      // },
+      {
+        'prettier/prettier': [
+          'error',
+          {
+            endOfLine: 'auto',
+          },
+        ],
+      },
       {
         test: /\.ts$/,
         exclude: /node_modules/, // node_mudules를 제외한다.
