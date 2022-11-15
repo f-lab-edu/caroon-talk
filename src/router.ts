@@ -10,7 +10,7 @@ const routes = {
 };
 
 // entry point
-function initialRoutes(mode, el) {
+function initialRoutes(mode: string, el: Element) {
   renderHTML(el, routes['/']);
 
   if (mode === 'history') {
@@ -23,15 +23,14 @@ function initialRoutes(mode, el) {
 }
 
 // set browser history
-function historyRouterPush(pathName, el) {
-  console.log(pathName, el);
+function historyRouterPush(pathName: string, el: Element) {
   window.history.pushState({}, pathName, window.location.origin + pathName);
   renderHTML(el, routes[pathName]);
 }
 
 // get hash history route
 function getHashRoute() {
-  let route = '/';
+  let route: Element | '' = '';
 
   Object.keys(routes).forEach(hashRoute => {
     if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
@@ -39,19 +38,20 @@ function getHashRoute() {
     }
   });
 
-  return route;
+  if (route) {
+    return route;
+  } else return routes[home];
 }
 
 // set hash history
-function hashRouterPush(pathName, el) {
+function hashRouterPush(pathName: string, el: Element) {
   renderHTML(el, getHashRoute());
 }
 
 // render
-function renderHTML(el, route) {
+function renderHTML(el: Element, route: Element) {
   console.log(el, route);
-  el.innerHTML = null;
-
+  el.innerHTML = '';
   el.appendChild(route);
 }
 

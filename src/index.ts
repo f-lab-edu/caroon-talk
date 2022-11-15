@@ -7,10 +7,12 @@ const historyAppDiv = document.querySelector('#history-app');
 const hashAppDiv = document.querySelector('#hash-app');
 
 // Browser History
-initialRoutes('history', historyAppDiv);
+
+if (historyAppDiv != null) initialRoutes('history', historyAppDiv);
 
 // Hash History
-initialRoutes('hash', hashAppDiv);
+
+if (hashAppDiv != null) initialRoutes('hash', hashAppDiv);
 
 window.onload = () => {
   const historyLinker = document.querySelectorAll('span.history');
@@ -18,17 +20,21 @@ window.onload = () => {
 
   historyLinker.forEach(el => {
     el.addEventListener('click', evt => {
-      const pathName = evt.target.getAttribute('route');
-
-      historyRouterPush(pathName, historyAppDiv);
+      const pathNode = evt.target as Element;
+      const pathName = pathNode.getAttribute('route');
+      if (pathName != null && historyAppDiv != null) {
+        historyRouterPush(pathName, historyAppDiv);
+      }
     });
   });
 
   hashLinker.forEach(el => {
     el.addEventListener('click', evt => {
-      const pathName = evt.target.getAttribute('route');
+      const pathNode = evt.target as Element;
+      const pathName = pathNode.getAttribute('route');
 
-      hashRouterPush(pathName, hashAppDiv);
+      if (pathName != null && hashAppDiv != null)
+        hashRouterPush(pathName, hashAppDiv);
     });
   });
 };
