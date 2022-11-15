@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
 
 // const mode = process.env.NODE_ENV || "development";
-const isDevelopment = false;
+const isDevelopment = true;
 const isProduction = !isDevelopment;
 
 module.exports = {
@@ -58,15 +59,7 @@ module.exports = {
   module: {
     rules: [
       {
-        'prettier/prettier': [
-          'error',
-          {
-            endOfLine: 'auto',
-          },
-        ],
-      },
-      {
-        test: /\.ts$/,
+        test: /\.ts|jsx|js$/,
         exclude: /node_modules/, // node_mudules를 제외한다.
         loader: 'babel-loader',
       },
@@ -90,5 +83,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html', // 템플릿 위치
     }),
+    isDevelopment ? new HotModuleReplacementPlugin() : '',
   ],
+  devServer: {
+    port: 9000,
+    hot: true,
+  },
+  watchOptions: {
+    poll: true,
+    ignored: '/node_modules/',
+  },
 };
