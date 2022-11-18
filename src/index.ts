@@ -1,12 +1,34 @@
 import './App.scss';
+// router
+import { initialRoutes, historyRouterPush, hashRouterPush } from './router';
 
-const arr = [1, 2, 3];
-const testBabel = () => console.log(arr);
-console.log(testBabel);
-const a = 1;
+// app division
+const historyAppDiv = document.querySelector('#history-app');
+const hashAppDiv = document.querySelector('#hash-app');
 
-const b = 'dd';
+// Browser History
+initialRoutes('history', historyAppDiv);
 
-const sample = document.getElementsByClassName('app')[0];
+// Hash History
+initialRoutes('hash', hashAppDiv);
 
-sample.addEventListener('click', () => {});
+window.onload = () => {
+  const historyLinker = document.querySelectorAll('span.history');
+  const hashLinker = document.querySelectorAll('a.hash');
+
+  historyLinker.forEach(el => {
+    el.addEventListener('click', evt => {
+      const pathName = evt.target.getAttribute('route');
+
+      historyRouterPush(pathName, historyAppDiv);
+    });
+  });
+
+  hashLinker.forEach(el => {
+    el.addEventListener('click', evt => {
+      const pathName = evt.target.getAttribute('route');
+
+      hashRouterPush(pathName, hashAppDiv);
+    });
+  });
+};
