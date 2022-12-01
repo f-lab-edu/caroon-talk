@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 // const mode = process.env.NODE_ENV || "development";
 const isDevelopment = true;
@@ -15,11 +16,11 @@ module.exports = {
   // target: ['browserslist'],
   entry: './src/index.ts', // 초기 파일 경로
   output: {
-    filename: 'bundle.js', // js 파일 이름 설정
+    filename: 'bundle.[contenthash:8].js', // js 파일 이름 설정
     path: path.resolve('./dist'), // 빌드 결과물을 생성할 경로(절대경로)
     pathinfo: isDevelopment,
-    chunkFilename: 'bundle.chunk.js', // 생성될 청크
-    assetModuleFilename: 'assets/[name][ext]', // asset 폴더에 있던 파일들은 dist 내부에 asset 폴더 생성후 이름과 확장자를 그대로 사용하여 저장
+    chunkFilename: 'bundle.chunk.[contenthash:8].js', // 생성될 청크 chunkFilename
+    assetModuleFilename: 'assets/[name].[hash][ext]', // asset 폴더에 있던 파일들은 dist 내부에 asset 폴더 생성후 이름과 확장자를 그대로 사용하여 저장
     clean: true, // 빌드 이전 결과물 제거
   },
   resolve: {
@@ -54,6 +55,29 @@ module.exports = {
       }),
       new CssMinimizerPlugin(),
     ],
+    splitChunks: {
+      chunks: 'all',
+      name: 'debouncer',
+      minSize: 20000,
+      minRemainingSize: 0,
+      maxSize: 50000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 20,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+      },
+    },
   },
 
   module: {
@@ -62,6 +86,9 @@ module.exports = {
         test: /\.ts|jsx|js$/,
         exclude: /node_modules/, // node_mudules를 제외한다.
         loader: 'babel-loader',
+        options: {
+          plugins: ['@babel/plugin-syntax-dynamic-import'],
+        },
       },
       {
         test: /\.(sass|scss|css)$/, // 확장자가 scss, css인 모든 파일
@@ -84,6 +111,10 @@ module.exports = {
       template: './src/index.html', // 템플릿 위치
     }),
     isDevelopment ? new HotModuleReplacementPlugin() : '',
+    new WebpackManifestPlugin({
+      fileName: 'assets.json',
+      basePath: '/',
+    }),
   ],
   devServer: {
     port: 9000,

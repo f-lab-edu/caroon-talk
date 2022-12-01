@@ -40,31 +40,40 @@ window.onload = () => {
   });
 };
 
-const fixed_box1 = document.getElementsByClassName('fixed-box')[0];
-const fixed_box2 = document.getElementsByClassName('fixed-box2')[0];
-const fixed_box3 = document.getElementsByClassName('fixed-box3')[0];
+const observeFunc = () => {
+  const infiniteBox = document.getElementsByClassName('infinite-box')[0];
+  const node1 = document.createElement('div');
+  const node2 = document.createElement('div');
+  const node3 = document.createElement('div');
+  const node4 = document.createElement('div');
+  const node5 = document.createElement('div');
+  const node6 = document.createElement('div');
 
-let box1Counter = 0;
-let box2Counter = 0;
-let box3Counter = 0;
+  node1.className = 'add-box';
+  node2.className = 'add-box';
+  node3.className = 'add-box';
+  node4.className = 'add-box';
+  node5.className = 'add-box';
+  node6.className = 'add-box';
 
-const box1plus = () => {
-  box1Counter += 1;
-  fixed_box1.innerHTML = `${box1Counter}`;
+  infiniteBox.append(node1);
+  infiniteBox.append(node2);
+  infiniteBox.append(node3);
+  infiniteBox.append(node4);
+  infiniteBox.append(node5);
+  infiniteBox.append(node6);
+  // console.log('why??');
 };
-const box2plus = () => {
-  box2Counter += 1;
-  fixed_box2.innerHTML = `${box2Counter}`;
-};
-const box3plus = () => {
-  box3Counter += 1;
-  fixed_box3.innerHTML = `${box3Counter}`;
-};
-
-const throttleFunc = throttler(box2plus, 100);
-const debounceFunc = debounce(box3plus, 300);
-window.addEventListener('wheel', () => {
-  box1plus();
-  throttleFunc();
-  debounceFunc();
+const observer = new IntersectionObserver(e => {
+  e.forEach(el => {
+    console.log(el);
+    observeFunc();
+    setTimeout(() => {
+      console.log(el, 'test');
+    }, 1000);
+  });
 });
+
+const observeBox = document.getElementsByClassName('observe')[0];
+
+observer.observe(observeBox);

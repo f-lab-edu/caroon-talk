@@ -5,3 +5,5 @@ export const Route2 = () => {
 
   return node1;
 };
+
+export default Route2;
