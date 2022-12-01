@@ -1,13 +1,41 @@
+/* eslint-disable no-param-reassign */
 import { Home } from './Home';
-import { Route1 } from './Route1';
-import { Route2 } from './Route2';
+import Route1 from './Route1';
+import Route2 from './Route2';
 // import Route1
 
-const routes = {
+const routes: RouteType = {
   '/': Home(),
   '/route1': Route1(),
   '/route2': Route2(),
 };
+
+type RouteType = {
+  [key: string]: Element;
+};
+
+// render
+function renderHTML(el: Element, route: Element) {
+  // console.log(el, route);
+  el.innerHTML = '';
+  el.appendChild(route);
+}
+
+// get hash history route
+function getHashRoute() {
+  let route: Element | '' = '';
+
+  Object.keys(routes).forEach(hashRoute => {
+    if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
+      route = routes[hashRoute];
+    }
+  });
+
+  if (route) {
+    return route;
+  }
+  return routes.Home;
+}
 
 // entry point
 function initialRoutes(mode: string, el: Element) {
@@ -28,31 +56,9 @@ function historyRouterPush(pathName: string, el: Element) {
   renderHTML(el, routes[pathName]);
 }
 
-// get hash history route
-function getHashRoute() {
-  let route: Element | '' = '';
-
-  Object.keys(routes).forEach(hashRoute => {
-    if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
-      route = routes[hashRoute];
-    }
-  });
-
-  if (route) {
-    return route;
-  } else return routes[home];
-}
-
 // set hash history
 function hashRouterPush(pathName: string, el: Element) {
   renderHTML(el, getHashRoute());
-}
-
-// render
-function renderHTML(el: Element, route: Element) {
-  console.log(el, route);
-  el.innerHTML = '';
-  el.appendChild(route);
 }
 
 export { initialRoutes, historyRouterPush, hashRouterPush };
