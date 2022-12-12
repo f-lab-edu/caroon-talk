@@ -42,7 +42,7 @@ function initialRoutes(mode: string, el: Element) {
   renderHTML(el, routes['/']);
 
   if (mode === 'history') {
-    window.onpopstate = () => renderHTML(el, routes[window.location.pathname]);
+    window.onpopstate = () => renderHTML(el, routes[window.location.pathname]); // onpopstate: history가 변할 경우 이벤트
   } else {
     window.addEventListener('hashchange', () => {
       return renderHTML(el, getHashRoute());

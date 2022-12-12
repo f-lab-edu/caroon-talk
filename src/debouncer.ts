@@ -1,6 +1,6 @@
 export const debounce = <F extends (...args: any[]) => any>(
   func: F,
-  waitFor: number
+  waitFor: number,
 ) => {
   //   let timeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -19,7 +19,7 @@ export const debounce = <F extends (...args: any[]) => any>(
 
 export const throttler = <F extends (...args: any[]) => any>(
   func: F,
-  waitFor: number
+  waitFor: number,
 ) => {
   let throttleCheck: NodeJS.Timeout;
   const throttled = (...args: Parameters<F>) => {
@@ -34,7 +34,7 @@ export const throttler = <F extends (...args: any[]) => any>(
     //   clearTimeout(timeout); // 기존의 E를 삭제한 후
     //   timeout = null;
     // }
-    //timeout = setTimeout(() => func(...args), waitFor); // 할당 or 재할당을 한다.     // 처음 시도할 경우 timeout에 설정이 될 것이다. 그 후 시간이 되기 전에 시도하면 timeout은 null인 상태로 있을 것이기에 다시 해야하지만...
+    // timeout = setTimeout(() => func(...args), waitFor); // 할당 or 재할당을 한다.     // 처음 시도할 경우 timeout에 설정이 될 것이다. 그 후 시간이 되기 전에 시도하면 timeout은 null인 상태로 있을 것이기에 다시 해야하지만...
   }; // 하지만 이렇게 한 경우... 시간이 자나고 시도가 되는데...
 
   return throttled as (...args: Parameters<F>) => ReturnType<F>;
