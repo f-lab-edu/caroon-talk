@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { Home } from './Home';
-import Route1 from './Route1';
+import { Home } from './Component/Home/Home';
+import Route1 from './Component/List/Route1';
 import Route2 from './Route2';
 // import Route1
 

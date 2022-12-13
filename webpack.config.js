@@ -14,7 +14,7 @@ module.exports = {
   mode: isProduction ? 'production' : isDevelopment && 'development', // or production
   stats: 'errors-warnings',
   // target: ['browserslist'],
-  entry: './src/index.ts', // 초기 파일 경로
+  entry: ['./src/index.ts', './src/App.scss'], // 초기 파일 경로
   output: {
     filename: 'bundle.[contenthash:8].js', // js 파일 이름 설정
     path: path.resolve('./dist'), // 빌드 결과물을 생성할 경로(절대경로)

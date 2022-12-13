@@ -76,6 +76,6 @@ const observer = new IntersectionObserver(e => {
   });
 });
 
-const observeBox = document.getElementsByClassName('observe')[0];
+// const observeBox = document.getElementsByClassName('observe')[0];
 
-observer.observe(observeBox);
+// observer.observe(observeBox);

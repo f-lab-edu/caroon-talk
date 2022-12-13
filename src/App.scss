@@ -1,84 +1,43 @@
-hr {
-  margin-top: 50px;
+@import url(./reset.scss);
+
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
-span {
+.main-body {
+  position: relative;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  width: 1080px;
+  // background-color: black;
+  height: 90vh;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+}
+
+.link-container {
+  width: 100px;
+  height: 100%;
+}
+
+.link-box {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-box span {
   cursor: pointer;
   color: blue;
   text-decoration: underline;
 }
 
-span:hover {
-  color: #6a00ff;
-}
-
-.link-container {
-  text-align: center;
-}
-
-.link-box {
-  padding: 20px 0px 20px 0px;
-  display: inline-block;
-  width: 170px;
-  height: 50px;
-  text-align: center;
-}
-
-.page {
-  width: 50%;
-  margin: 0 auto;
-  height: 30vh;
-  border: 1px solid #4b4b4b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-//
-.long-box {
+.content-box {
   width: 100%;
-  height: 300vh;
-  background-color: skyblue;
-}
-
-.fixed-box {
-  font-size: 32px;
-
-  position: fixed;
-  width: 100px;
-  height: 100px;
-  left: 0;
-  top: 50%;
-  background-color: white;
-}
-.fixed-box2 {
-  font-size: 32px;
-
-  position: fixed;
-  width: 100px;
-  height: 100px;
-  right: 0;
-  top: 50%;
-  background-color: white;
-}
-
-.fixed-box3 {
-  font-size: 32px;
-  position: fixed;
-  width: 100px;
-  height: 100px;
-  right: 50%;
-  top: 50%;
-  background-color: white;
-}
-
-.add-box {
-  height: 100px;
-  width: 100%;
-  background-color: pink;
-}
-
-.observe {
-  width: 100px;
-  height: 100px;
-  background-color: black;
+  height: 100%;
+  background-color: yellow;
 }

@@ -1,29 +1,21 @@
-export const Home = () => {
-  //  const historyApp = document.getElementsByClassName('history-app')[0];
-
-  const HomeNode = document.createElement('div');
+const Route1 = () => {
+  const TalkListWrap = document.createElement('div');
   const TextNode = document.createElement('div');
 
-  /// TextNode
-
-  const TextNodeInnerText = document.createTextNode('친구');
-  TextNode.appendChild(TextNodeInnerText);
-  HomeNode.appendChild(TextNode);
+  TalkListWrap.appendChild(TextNode);
 
   const SearchAndAddFriendNode = document.createElement('div');
   const SearchNode = document.createElement('div');
   SearchNode.classList.add('SearchButton');
   SearchNode.innerText = 'search';
 
-  const AddFriendNode = document.createElement('div');
-  AddFriendNode.innerText = 'addFriend';
+  const AddChatNode = document.createElement('div');
+  AddChatNode.innerText = 'addChat';
 
   SearchAndAddFriendNode.appendChild(SearchNode);
-  SearchAndAddFriendNode.appendChild(AddFriendNode);
+  SearchAndAddFriendNode.appendChild(AddChatNode);
 
   TextNode.appendChild(SearchAndAddFriendNode);
-
-  /// SearchNode
 
   const SearchLineWrap = document.createElement('div');
 
@@ -52,51 +44,9 @@ export const Home = () => {
     } else SearchLineWrapClassList.remove('on');
   }); // 클릭하면 search 바 생성, 없엠 // 이 부분이 왜 작동 안되는지를 모르겠다;;
 
-  HomeNode.appendChild(SearchLineWrap);
+  TalkListWrap.appendChild(SearchLineWrap);
 
-  //// FriendList
-
-  const FriendList = [
-    {
-      id: 1,
-      name: '이장훈',
-    },
-    {
-      id: 2,
-      name: '박규정',
-    },
-    {
-      id: 3,
-      name: '전민재',
-    },
-    {
-      id: 4,
-      name: '김그윽한',
-    },
-    {
-      id: 5,
-      name: '김원석',
-    },
-    {
-      id: 1,
-      name: '이장훈',
-    },
-  ];
-
-  const FriendListNode = document.createElement('div');
-
-  FriendList.map(el => {
-    const FriendNode = document.createElement('div');
-    const FriendName = document.createElement('div');
-    const Friendprofile = document.createElement('div');
-    Friendprofile.innerText = 'profile';
-    FriendName.innerText = el.name;
-    FriendNode.appendChild(FriendName); // FriendNode 추가
-    FriendListNode.appendChild(Friendprofile);
-    FriendListNode.appendChild(FriendNode);
-  });
-
-  HomeNode.appendChild(FriendListNode);
-
-  return HomeNode;
+  return TalkListWrap;
 };
+
+export default Route1;
