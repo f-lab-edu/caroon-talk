@@ -8,9 +8,9 @@ import setting from '../../asset/setting.svg';
 export const Home = () => {
   //  const historyApp = document.getElementsByClassName('history-app')[0];
 
-  console.log(homeBtn);
-  console.log(talkBtn);
-  console.log(setting);
+  // console.log(homeBtn);
+  // console.log(talkBtn);
+  // console.log(setting);
 
   const HomeNode = document.createElement('div');
 
@@ -83,6 +83,7 @@ export const Home = () => {
   SearchLineRightCloseBtn.classList.add('searchLine__right__closeButton');
 
   SearchNode.addEventListener('click', function SearchButtonClick(e) {
+    console.log('wow');
     const SearchLineWrapClassList = SearchLineWrap.classList;
     if (SearchLineWrapClassList.contains('on')) {
       SearchLineWrapClassList.add('on');

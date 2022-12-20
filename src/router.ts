@@ -5,8 +5,8 @@ import Route2 from './Route2';
 // import Route1
 
 const routes: RouteType = {
-  '/': Home(),
-  '/route1': Route1(),
+  '/': Route1(),
+  '/route1': Home(),
   '/route2': Route2(),
 };
 

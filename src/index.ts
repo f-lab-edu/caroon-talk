@@ -1,5 +1,4 @@
 import './App.scss';
-// router
 import { debounce, throttler } from './debouncer';
 import { initialRoutes, historyRouterPush, hashRouterPush } from './router';
 
@@ -16,7 +15,7 @@ if (historyAppDiv != null) initialRoutes('history', historyAppDiv);
 if (hashAppDiv != null) initialRoutes('hash', hashAppDiv);
 
 window.onload = () => {
-  const historyLinker = document.querySelectorAll('span.history');
+  const historyLinker = document.querySelectorAll('img.history');
   const hashLinker = document.querySelectorAll('a.hash');
 
   historyLinker.forEach(el => {
@@ -25,6 +24,7 @@ window.onload = () => {
       const pathNode = evt.target as Element;
       const pathName = pathNode.getAttribute('route');
       if (pathName != null && historyAppDiv != null) {
+        console.log('historyLinker');
         historyRouterPush(pathName, historyAppDiv); // history 변경 시 이벤트
       }
     });
