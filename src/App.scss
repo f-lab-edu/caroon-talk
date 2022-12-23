@@ -20,7 +20,6 @@ body {
 .link-container {
   max-width: 52px;
   min-width: 52px;
-  height: 100%;
   background-color: #ececed;
   padding-top: 16px;
 }
@@ -59,11 +58,11 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: calc(100% - 64px);
-  left: 50%;
-  transform: translate(-50%, 0);
+  width: calc(100% - 8px);
+  left: 0%;
   height: 100%;
-  // background-color: red;
+
+  // padding-right: 8px;
 }
 
 .home__title {
@@ -71,6 +70,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0px 32px;
 }
 
 .home__title span {
@@ -104,6 +104,20 @@ body {
   padding-bottom: 16px;
 
   border-bottom: 1px solid #f2f2f2;
+
+  padding: 0px 32px;
+}
+
+.searchLineFriend {
+  margin-top: 24px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+
+  padding: 0px 32px;
 }
 
 .searchLine__left {
@@ -174,6 +188,13 @@ body {
   background-color: #f9f9f9;
 }
 
+.friendListrel {
+  height: 100%;
+  width: 100%;
+  // background-color: blue;
+  position: relative;
+}
+
 .friendList {
   // background-color: red;
   height: 100%;
@@ -184,18 +205,31 @@ body {
   overflow-y: scroll;
 }
 
-.friendListrel {
-  height: 100%;
-  width: 100%;
-  // background-color: blue;
-  position: relative;
+.friendList::-webkit-scrollbar {
+  width: 10px; /*스크롤바의 너비*/
+  margin: 10px;
+}
+
+.friendList::-webkit-scrollbar-thumb {
+  background-color: #cccccc; /*스크롤바의 색상*/
+  margin: 10px;
+
+  border-radius: 999px;
+}
+
+.friendList::-webkit-scrollbar-track {
+  background-color: none; /*스크롤바 트랙 색상*/
 }
 
 .friendProfile {
   display: flex;
-  width: 100%;
+  // width: 100%;
   height: 56px;
   align-items: center;
+
+  position: relative;
+  margin-right: 8px;
+  padding: 0px 32px;
 }
 
 .friendProfile:hover {
@@ -241,4 +275,131 @@ body {
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+}
+
+//// talkList
+
+.talklist-wrap {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: calc(100% - 8px);
+  left: 0%;
+  height: 100%;
+
+  // padding-right: 8px;
+}
+
+.talklist__title {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 32px;
+}
+
+.talklist__title span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+// talkList
+
+.talkListrel {
+  height: 100%;
+  width: 100%;
+  // background-color: blue;
+  position: relative;
+}
+
+.talkList {
+  // background-color: red;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  // margin-top: 16px;
+  // padding-top: 16px;
+  overflow-y: scroll;
+}
+
+.talkList::-webkit-scrollbar {
+  width: 10px; /*스크롤바의 너비*/
+  margin: 10px;
+}
+
+.talkList::-webkit-scrollbar-thumb {
+  background-color: #cccccc; /*스크롤바의 색상*/
+  margin: 10px;
+
+  border-radius: 999px;
+}
+
+.talkList::-webkit-scrollbar-track {
+  background-color: none; /*스크롤바 트랙 색상*/
+}
+
+.talkProfile {
+  display: flex;
+  // width: 100%;
+  height: 70px;
+  align-items: center;
+
+  position: relative;
+  margin-right: 8px;
+  padding: 0px 32px;
+}
+
+.talkProfile:hover {
+  background-color: #f8f8f8;
+}
+
+.talkProfile__img {
+  height: 48px;
+  width: 48px;
+  border-radius: 16px;
+
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.talkProfile__contents {
+  margin-left: 12px;
+}
+
+.talkProfile__contents__name {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px 4px 8px 4px;
+
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.talkProfile__name__status {
+  font-size: 12px;
+  color: #909090;
+  margin: 4px;
+
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.talkProfile__Date {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translate(0px, -100px);
+
+  font-size: 12px;
+  color: #bfbfbf;
 }

@@ -5,13 +5,64 @@ import talkBtn from '../../asset/talkBtn.svg';
 import homeBtn from '../../asset/HomeBtn.svg';
 import setting from '../../asset/setting.svg';
 
+const FriendList = [
+  {
+    id: 1,
+    name: '이장훈',
+    status: '오늘도 좋은 하루',
+  },
+  {
+    id: 2,
+    name: '박규정',
+    status: '심심해요',
+  },
+  {
+    id: 3,
+    name: '전민재',
+    status: '뭐가 문제일까',
+  },
+  {
+    id: 4,
+    name: '김그윽한',
+  },
+  {
+    id: 5,
+    name: '김원석',
+  },
+  {
+    id: 6,
+    name: '이장훈',
+  },
+  {
+    id: 7,
+    name: '이장훈',
+    status: '오늘도 좋은 하루',
+  },
+  {
+    id: 8,
+    name: '박규정',
+    status: '심심해요',
+  },
+  {
+    id: 9,
+    name: '전민재',
+    status: '뭐가 문제일까',
+  },
+  {
+    id: 10,
+    name: '김그윽한',
+  },
+  {
+    id: 11,
+    name: '김원석',
+  },
+  {
+    id: 12,
+    name: '이장훈',
+  },
+];
+
 export const Home = () => {
-  //  const historyApp = document.getElementsByClassName('history-app')[0];
-
-  // console.log(homeBtn);
-  // console.log(talkBtn);
-  // console.log(setting);
-
   const HomeNode = document.createElement('div');
 
   HomeNode.classList.add('home-wrap');
@@ -82,7 +133,7 @@ export const Home = () => {
 
   SearchLineRightCloseBtn.classList.add('searchLine__right__closeButton');
 
-  SearchNode.addEventListener('click', function SearchButtonClick(e) {
+  SearchNode.addEventListener('click', () => {
     console.log('wow');
     const SearchLineWrapClassList = SearchLineWrap.classList;
     if (SearchLineWrapClassList.contains('on')) {
@@ -93,63 +144,6 @@ export const Home = () => {
   HomeNode.appendChild(SearchLineWrap);
 
   //// FriendList
-
-  const FriendList = [
-    {
-      id: 1,
-      name: '이장훈',
-      status: '오늘도 좋은 하루',
-    },
-    {
-      id: 2,
-      name: '박규정',
-      status: '심심해요',
-    },
-    {
-      id: 3,
-      name: '전민재',
-      status: '뭐가 문제일까',
-    },
-    {
-      id: 4,
-      name: '김그윽한',
-    },
-    {
-      id: 5,
-      name: '김원석',
-    },
-    {
-      id: 6,
-      name: '이장훈',
-    },
-    {
-      id: 7,
-      name: '이장훈',
-      status: '오늘도 좋은 하루',
-    },
-    {
-      id: 8,
-      name: '박규정',
-      status: '심심해요',
-    },
-    {
-      id: 9,
-      name: '전민재',
-      status: '뭐가 문제일까',
-    },
-    {
-      id: 10,
-      name: '김그윽한',
-    },
-    {
-      id: 11,
-      name: '김원석',
-    },
-    {
-      id: 12,
-      name: '이장훈',
-    },
-  ];
 
   const FriendListNodeRel = document.createElement('div');
   FriendListNodeRel.classList.add('friendListrel');

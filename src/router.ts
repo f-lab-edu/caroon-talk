@@ -17,9 +17,9 @@ type RouteType = {
 // render
 function renderHTML(el: Element, route: Element) {
   // console.log(el, route);
-  const cloneEl = route.cloneNode(true);
+  // const cloneEl = route.cloneNode(true);
   el.innerHTML = '';
-  el.appendChild(cloneEl);
+  el.appendChild(route);
 }
 
 // get hash history route
