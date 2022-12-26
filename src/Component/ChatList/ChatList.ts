@@ -5,7 +5,7 @@ import talkBtn from '../../asset/talkBtn.svg';
 import homeBtn from '../../asset/HomeBtn.svg';
 import setting from '../../asset/setting.svg';
 
-const Route1 = () => {
+export const ChatList = () => {
   const TalkListWrap = document.createElement('div');
 
   TalkListWrap.classList.add('talklist-wrap');
@@ -186,5 +186,3 @@ const Route1 = () => {
 
   return TalkListWrap;
 };
-
-export default Route1;

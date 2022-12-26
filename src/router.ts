@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
-import { Home } from './Component/Home/Home';
-import Route1 from './Component/List/Route1';
+import { FriendList } from './Component/FriendList/FriendList';
+import { ChatList } from './Component/ChatList/ChatList';
 import Route2 from './Route2';
 // import Route1
 
 const routes: RouteType = {
-  '/': Route1(),
-  '/route1': Home(),
+  '/': FriendList(),
+  '/route1': ChatList(),
   '/route2': Route2(),
 };
 
