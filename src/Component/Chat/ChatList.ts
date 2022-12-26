@@ -1,9 +1,6 @@
 import lens from '../../asset/lens.svg';
 import profileimage from '../../asset/profile.svg';
 import addFriendimage from '../../asset/addFriend.svg';
-import talkBtn from '../../asset/talkBtn.svg';
-import homeBtn from '../../asset/HomeBtn.svg';
-import setting from '../../asset/setting.svg';
 
 const TalkListArr = [
   {

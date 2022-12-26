@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { FriendList } from './Component/FriendList/FriendList';
 import { ChatList } from './Component/ChatList/ChatList';
-import Route2 from './Route2';
+// import Route2 from './Route2';
 // import Route1
 
 const routes: RouteType = {
-  '/': FriendList(),
-  '/route1': ChatList(),
-  '/route2': Route2(),
+  '/': ChatList(),
+  '/chatList': FriendList(),
+  '/talk': ChatList(),
 };
 
 type RouteType = {
@@ -15,34 +15,37 @@ type RouteType = {
 };
 
 // render
-function renderHTML(el: Element, route: Element) {
-  // console.log(el, route);
-  // const cloneEl = route.cloneNode(true);
+function renderHTML(el: Element, pathName: string) {
+  const pathArr = pathName.split('/');
+  pathArr.shift();
   el.innerHTML = '';
-  el.appendChild(route);
+
+  if (pathArr[0] === '' || pathArr[0] === 'chatList') {
+    el.appendChild(routes['/' + pathArr[0]]);
+  }
 }
 
 // get hash history route
 function getHashRoute() {
   // 해시 주소 받기
   // 해시 라우트
-  let route: Element | '' = '';
+  let route: string | '' = '';
 
   Object.keys(routes).forEach(hashRoute => {
     if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
-      route = routes[hashRoute];
+      route = hashRoute;
     }
   });
 
   if (route) {
     return route;
   }
-  return routes.Home;
+  return 'Home';
 }
 
 // entry point
 function initialRoutes(mode: string, el: Element) {
-  renderHTML(el, routes['/']);
+  renderHTML(el, '/');
 
   if (mode === 'history') {
     window.addEventListener('popstate', () => {
@@ -54,7 +57,7 @@ function initialRoutes(mode: string, el: Element) {
         window.location.pathname,
         'historyChanged',
       );
-      renderHTML(el, routes[window.location.pathname]);
+      renderHTML(el, 'window.location.pathname');
     });
   } else {
     window.addEventListener('hashchange', () => {
@@ -72,9 +75,8 @@ function initialRoutes(mode: string, el: Element) {
 
 // set browser history
 function historyRouterPush(pathName: string, el: Element) {
-  console.log('pushHistory'); // history를 넣음
-  window.history.pushState({}, pathName, window.location.origin + pathName);
-  renderHTML(el, routes[pathName]);
+  window.history.pushState({}, pathName, window.location.origin + pathName); // 현제 URL 변경
+  renderHTML(el, pathName); // renderHTML 완료
 }
 
 // set hash history
