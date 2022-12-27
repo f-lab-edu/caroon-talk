@@ -10,6 +10,18 @@ const TalkObj = {
     김상훈: { profile: 'img' },
     이도형: { profile: 'img' },
   },
+  chatLog: [
+    [
+      '2022-12-28',
+      [
+        ['이장훈', '안녕하세요'],
+        ['김진현', '만나서 반갑습니다.'],
+        ['김상훈', '아 저분이 그 분이신가요?'],
+        ['이장훈', '맞아요 저번에 말씀드렸죠?'],
+        ['이도형', '기다리고 있었어요!'],
+      ],
+    ],
+  ],
 };
 
 export const Chat = () => {
@@ -18,6 +30,8 @@ export const Chat = () => {
 
   appendTitle(MainNode);
   /// talk-node
+
+  appendTalkNode(MainNode);
   return MainNode;
 };
 
@@ -116,20 +130,80 @@ function appendTitle(Node: Element) {
 
     const TitleRightSearchBtn = document.createElement('div');
     TitleRightSearchBtn.classList.add('title-wrap__right__search-button');
+    TitleRightSearchBtn.innerText = 'O';
     TitleRightNode.appendChild(TitleRightSearchBtn);
 
     const TitleRightMenuBtn = document.createElement('div');
     TitleRightMenuBtn.classList.add('title-wrap__right__menu-button');
     TitleRightNode.appendChild(TitleRightMenuBtn);
 
+    Node.appendChild(TitleRightNode);
+
     return TitleRightSearchBtn;
   }
 
   Node.appendChild(TitleNode);
 
-  appendTitleSearch(TitleNode, TitleRightSearchBtn);
-  function appendTitleSearch(Node: Element, SearchButton: Element) {}
+  appendSearch(Node, TitleRightSearchBtn);
 
-  const appendSearchBar = document.createElement('div');
-  Node.appendChild(appendSearchBar);
+  function appendSearch(Node: Element, SearchButton: Element) {
+    const SearchWrapNode = document.createElement('div');
+    SearchWrapNode.classList.add('search-wrap');
+
+    appendSearchLeft(SearchWrapNode);
+    function appendSearchLeft(Node: Element) {
+      const SearchLeftNode = document.createElement('div');
+      SearchLeftNode.classList.add('search-wrap__left');
+      Node.appendChild(SearchLeftNode);
+
+      const SearchIconImg = document.createElement('div');
+      SearchIconImg.classList.add('search-wrap__left__icon-img');
+      SearchLeftNode.appendChild(SearchIconImg);
+
+      const SearchInput = document.createElement('input');
+      SearchInput.classList.add('search-wrap__left__input');
+      SearchInput.placeholder = '대화내용 검색';
+      SearchLeftNode.appendChild(SearchInput);
+
+      const SearchBtn = document.createElement('div');
+      SearchBtn.classList.add('search-wrap__left__button');
+      SearchLeftNode.appendChild(SearchBtn);
+    }
+
+    appendSearchRight(SearchWrapNode);
+    function appendSearchRight(Node: Element) {
+      const SearchRightNode = document.createElement('div');
+      SearchRightNode.classList.add('search-wrap__right');
+
+      const SearchCloseBtn = document.createElement('div');
+      SearchCloseBtn.classList.add('search-wrap__right__close-btn');
+      SearchCloseBtn.innerText = 'X';
+      SearchRightNode.appendChild(SearchCloseBtn);
+
+      SearchCloseBtn.addEventListener('click', () => {
+        if (Node.classList.contains('on')) {
+          Node.classList.remove('on');
+        } else {
+          Node.classList.add('on');
+        }
+      });
+
+      Node.appendChild(SearchRightNode);
+    }
+
+    SearchButton.addEventListener('click', () => {
+      if (SearchWrapNode.classList.contains('on')) {
+        SearchWrapNode.classList.remove('on');
+      } else {
+        SearchWrapNode.classList.add('on');
+      }
+    });
+
+    Node.appendChild(SearchWrapNode);
+  }
 }
+
+function appendTalkNode(Node: Element) {}
+
+function appendFriendTalkNode(Node: Element) {}
+function appendMyTalkNode(Node: Element) {}
