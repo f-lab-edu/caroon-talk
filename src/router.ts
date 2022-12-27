@@ -1,11 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { FriendList } from './Component/FriendList/FriendList';
 import { ChatList } from './Component/ChatList/ChatList';
+import { Chat } from './Component/Chat/Chat';
 // import Route2 from './Route2';
 // import Route1
 
 const routes: RouteType = {
-  '/': ChatList(),
+  '/': Chat(),
   '/chatList': FriendList(),
   '/talk': ChatList(),
 };
