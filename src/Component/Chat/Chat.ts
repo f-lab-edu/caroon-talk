@@ -2,6 +2,11 @@ import lens from '../../asset/lens.svg';
 import profileimage from '../../asset/profile.svg';
 import addFriendimage from '../../asset/addFriend.svg';
 
+function returnDate(parameter: string) {
+  const date = new Date(parameter);
+  return date;
+}
+
 const TalkObj = {
   chatName: 'chat-name',
   peopleInfo: {
@@ -12,7 +17,7 @@ const TalkObj = {
   },
   chatLog: [
     [
-      '2022-12-28',
+      returnDate('2022-12-28'),
       [
         ['이장훈', '안녕하세요'],
         ['김진현', '만나서 반갑습니다.'],
@@ -23,6 +28,7 @@ const TalkObj = {
     ],
   ],
 };
+0;
 
 export const Chat = () => {
   const MainNode = document.createElement('div');
@@ -32,6 +38,8 @@ export const Chat = () => {
   /// talk-node
 
   appendTalkNode(MainNode);
+
+  console.log(TalkObj.chatLog);
   return MainNode;
 };
 

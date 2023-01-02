@@ -1,5 +1,5 @@
-import './App.scss';
-import { debounce, throttler } from './debouncer';
+import './style/App.scss';
+import { debounce, throttler } from './utils/debouncer';
 import { initialRoutes, historyRouterPush, hashRouterPush } from './router';
 
 // app division

@@ -14,7 +14,7 @@ module.exports = {
   mode: isProduction ? 'production' : isDevelopment && 'development', // or production
   stats: 'errors-warnings',
   // target: ['browserslist'],
-  entry: ['./src/index.ts', './src/App.scss'], // 초기 파일 경로
+  entry: ['./src/index.ts', './src/style/App.scss'], // 초기 파일 경로
   output: {
     filename: 'bundle.[contenthash:8].js', // js 파일 이름 설정
     path: path.resolve('./dist'), // 빌드 결과물을 생성할 경로(절대경로)
@@ -26,6 +26,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     modules: ['node_modules'],
+    alias: {
+      asset: path.resolve(__dirname, './src/asset/'),
+      data: path.resolve(__dirname, './src/data/'),
+    },
   },
   optimization: {
     minimize: isProduction,
