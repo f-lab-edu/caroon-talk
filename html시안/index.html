@@ -7,11 +7,12 @@
     <link href="index.css" rel="stylesheet" type="text/css" />
     <title>Document</title>
   </head>
+
   <body>
     <div class="wrap">
       <nav class="menu-bar">menu</nav>
       <div class="chatting-wrap">
-        <section class="friend-list-wrap">
+        <section class="friend-list-wrap" aria-label="친구창">
           <div class="friend-list-title"></div>
           <ul class="friend-list">
             <li class="friends"></li>
@@ -30,7 +31,7 @@
             <li class="friends"></li>
           </ul>
         </section>
-        <section class="chatting-area">
+        <section class="chatting-area" aria-label="채팅창">
           <div class="chat-top-bar"></div>
           <div class="chat-list">
             <div class="my-chat"><div class="chat-box">ㅂㅂ</div></div>
@@ -72,7 +73,14 @@
           </div>
           <div class="chat-input">
             <div class="emoticon-box"></div>
-            <textarea id="story" name="story" rows="5" cols="33"> </textarea>
+            <textarea
+              id="story"
+              name="story"
+              rows="5"
+              cols="33"
+              aria-label="입력창"
+            >
+            </textarea>
           </div>
         </section>
         <div class="blank-area"></div>

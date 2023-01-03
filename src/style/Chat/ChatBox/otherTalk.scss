@@ -1,0 +1,29 @@
+.other-talk__wrap {
+  display: flex;
+}
+
+.other-talk__talk {
+  padding: 8px;
+  background-color: white;
+  font-size: 12px;
+  border-radius: 5px;
+
+  margin: 8px 12px 8px 0px;
+
+  position: relative;
+}
+
+.other-talk__talk__tail {
+  position: absolute;
+  left: 0px;
+  bottom: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 4px solid white;
+  border-left: 4px solid transparent;
+  border-right: 4px solid white;
+  border-bottom: 4px solid transparent;
+  box-sizing: border-box;
+
+  transform: translate(-100%, 0);
+}

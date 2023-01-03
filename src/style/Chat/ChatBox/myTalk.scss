@@ -1,0 +1,29 @@
+.my-talk__wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.my-talk__talk {
+  padding: 8px;
+  background-color: #ffeb33;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-right: 12px;
+
+  position: relative;
+}
+
+.my-talk__talk__tail {
+  position: absolute;
+  right: 0px;
+  bottom: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 4px solid #ffeb33;
+  border-left: 4px solid #ffeb33;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  box-sizing: border-box;
+
+  transform: translate(100%, 0);
+}

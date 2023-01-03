@@ -1,0 +1,58 @@
+.myProfile {
+  display: flex;
+  height: 90px;
+  align-items: center;
+
+  position: relative;
+  margin: 8px 8px 8px 0px;
+
+  padding: 0px 32px;
+}
+
+.myProfile:focus {
+  background-color: #f2f2f2;
+}
+
+.myProfile:hover {
+  background-color: #f8f8f8;
+}
+
+.myProfile__img {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.myProfile__contents {
+  margin-left: 12px;
+}
+
+.myProfile__contents__name {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px;
+
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.myProfile__name__status {
+  font-size: 12px;
+  color: #909090;
+  margin: 4px;
+
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

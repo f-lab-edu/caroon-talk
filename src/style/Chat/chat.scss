@@ -1,0 +1,67 @@
+@import url(./ChatBox/myTalk.scss);
+@import url(./title.scss);
+@import url(./ChatBox/otherTalk.scss);
+@import url(./From.scss);
+
+.chat-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #bacee0;
+}
+.chat-main__wrap-rel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.chat-main__wrap {
+  position: absolute;
+  background-color: #bacee0;
+  height: 100%;
+  width: calc(100% - 4px);
+  overflow-y: scroll;
+}
+
+.chat-main__wrap::-webkit-scrollbar {
+  width: 10px; /*스크롤바의 너비*/
+  margin: 10px;
+}
+
+.chat-main__wrap::-webkit-scrollbar-thumb {
+  background-color: #95a5b3; /*스크롤바의 색상*/
+  margin: 10px;
+
+  border-radius: 999px;
+}
+
+.chat-main__wrap::-webkit-scrollbar-track {
+  background-color: none; /*스크롤바 트랙 색상*/
+}
+
+.chat-main__person__wrap {
+  display: flex;
+}
+
+.chat-main__person__profile-wrap {
+  margin: 0px 16px 0px 32px;
+}
+.chat-main__person__profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+}
+
+.chat-main__person__content-name {
+  font-size: 12px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.chat-main__person__wrap {
+  width: 100%;
+}
+
+.chat-main__person__content-wrap {
+  width: 100%;
+}
