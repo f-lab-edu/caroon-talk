@@ -1,13 +1,21 @@
-export function MyChat(time: string) {
-  const MyChatWrap = document.createElement('div');
-  MyChatWrap.classList.add('chat__my-chat');
+export function appendMyTalkNode(
+  Node: Element,
+  el: [string, Date, string],
+  FirstFlag: boolean,
+  EndFlag: boolean,
+) {
+  const MyTalkWrap = document.createElement('div');
+  MyTalkWrap.classList.add('my-talk__wrap');
+  const TalkNode = document.createElement('div');
+  TalkNode.classList.add('my-talk__talk');
+  TalkNode.innerText = el[2];
 
-  const MyChatInfo = document.createElement('div');
-  MyChatInfo.classList.add('chat__my-chat__info');
+  if (FirstFlag) {
+    const TalkTailNode = document.createElement('div');
+    TalkTailNode.classList.add('my-talk__talk__tail');
+    TalkNode.appendChild(TalkTailNode);
+  }
 
-  const MyChatTime = document.createElement('div');
-  MyChatTime.classList.add('chat__my-chat__time');
-
-  const MyChatBubbleTail = document.createElement('div');
-  MyChatBubbleTail.classList.add('chat__my-chat__bubble-tail');
+  MyTalkWrap.appendChild(TalkNode);
+  Node.appendChild(MyTalkWrap);
 }

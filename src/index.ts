@@ -1,6 +1,10 @@
 import './style/App.scss';
 import { debounce, throttler } from './utils/debouncer';
 import { initialRoutes, historyRouterPush, hashRouterPush } from './router';
+import { worker } from './mocks/worker';
+if (process.env.NODE_ENV === 'development') {
+  worker.start();
+}
 
 // app division
 const historyAppDiv = document.querySelector('#history-app');

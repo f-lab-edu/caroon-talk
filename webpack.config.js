@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const { HotModuleReplacementPlugin } = require('webpack');
+const { HotModuleReplacementPlugin, webpack } = require('webpack');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 // const mode = process.env.NODE_ENV || "development";

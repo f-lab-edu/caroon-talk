@@ -1,13 +1,21 @@
-export function OtherChat() {
-  const OtherChatWrap = document.createElement('div');
-  OtherChatWrap.classList.add('chat__other-chat');
+export function appendOtherTalkNode(
+  Node: Element,
+  el: [string, Date, string],
+  FirstFlag: boolean,
+  EndFlag: boolean,
+) {
+  const OtherTalkWrap = document.createElement('div');
+  OtherTalkWrap.classList.add('other-talk__wrap');
+  const TalkNode = document.createElement('div');
+  TalkNode.classList.add('other-talk__talk');
+  TalkNode.innerText = el[2];
 
-  const OtherChatInfo = document.createElement('div');
-  OtherChatInfo.classList.add('chat__other-chat__info');
+  if (FirstFlag) {
+    const TalkTailNode = document.createElement('div');
+    TalkTailNode.classList.add('other-talk__talk__tail');
+    TalkNode.appendChild(TalkTailNode);
+  }
 
-  const OtherChatTime = document.createElement('div');
-  OtherChatTime.classList.add('chat__other-chat__time');
-
-  const OtherChatBubbleTail = document.createElement('div');
-  OtherChatBubbleTail.classList.add('chat__other-chat__bubble-tail');
+  OtherTalkWrap.appendChild(TalkNode);
+  Node.appendChild(OtherTalkWrap);
 }
