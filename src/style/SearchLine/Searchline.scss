@@ -1,16 +1,11 @@
 .searchLine {
   display: none;
-  margin-top: 24px;
   height: 32px;
-  // display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
   padding-bottom: 16px;
 
-  // border-bottom: 1px solid #f2f2f2;
-
-  padding: 0px 32px;
+  padding: 24px 32px 16px 32px;
 }
 .searchLine.on {
   display: flex;
@@ -102,4 +97,13 @@
 
 .searchLine__right__closeButton:hover {
   background-color: #f9f9f9;
+}
+
+.chat-wrap .searchLine {
+  background-color: #bacee0;
+}
+
+.chat-wrap .searchLine.on {
+  border: none;
+  border-bottom: solid 0.5px #f9f9f9;
 }

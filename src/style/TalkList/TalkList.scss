@@ -1,5 +1,4 @@
 @import url(./Talkprofile.scss);
-//// talkList
 
 .talklist-wrap {
   display: flex;
@@ -8,8 +7,6 @@
   width: calc(100% - 8px);
   left: 0%;
   height: 100%;
-
-  // padding-right: 8px;
 }
 
 .talklist__title {
@@ -36,17 +33,13 @@
 .talkListrel {
   height: 100%;
   width: 100%;
-  // background-color: blue;
   position: relative;
 }
 
 .talkList {
-  // background-color: red;
   height: 100%;
   width: 100%;
   position: absolute;
-  // margin-top: 16px;
-  // padding-top: 16px;
   overflow-y: scroll;
 }
 

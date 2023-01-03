@@ -23,8 +23,7 @@ export function appendMyProfile(Node: Element) {
 
   MyProfileName.innerText = MyProfileInfo.name;
   MyProfileNode.appendChild(MyProfileImgNode);
-  MyProfileNode.appendChild(MyProfileContents); // MyProfileNode 추가
-  //
+  MyProfileNode.appendChild(MyProfileContents);
   MyProfileContents.appendChild(MyProfileName);
   MyProfileContents.appendChild(MyProfileStatus);
 

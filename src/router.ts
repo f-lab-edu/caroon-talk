@@ -8,7 +8,7 @@ import { Chat } from './Component/Chat/Chat';
 const routes: RouteType = {
   '/': Chat(),
   '/chatList': FriendList(),
-  '/talk': ChatList(),
+  '/talkSample': ChatList(),
 };
 
 type RouteType = {
@@ -21,7 +21,11 @@ function renderHTML(el: Element, pathName: string) {
   pathArr.shift();
   el.innerHTML = '';
 
-  if (pathArr[0] === '' || pathArr[0] === 'chatList') {
+  if (
+    pathArr[0] === '' ||
+    pathArr[0] === 'chatList' ||
+    pathArr[0] === 'talkSample'
+  ) {
     el.appendChild(routes['/' + pathArr[0]]);
   }
 }

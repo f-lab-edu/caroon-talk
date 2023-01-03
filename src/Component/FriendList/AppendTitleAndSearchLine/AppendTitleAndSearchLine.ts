@@ -1,5 +1,5 @@
+import { makeSearchLine } from '../../SearchLine/SearchLine';
 import { makeButtonWrapNode } from './MakeButtonWrap';
-import { makeSearchLine } from './MakeSearchLine';
 
 export function appendTitleAndSearchLineNode(Node: Element) {
   const TitleNode = document.createElement('div');
@@ -13,7 +13,7 @@ export function appendTitleAndSearchLineNode(Node: Element) {
 
   Node.appendChild(TitleNode);
 
-  const SearchLineWrap = makeSearchLine();
+  const [SearchLineWrap, SearchInput] = makeSearchLine();
   Node.appendChild(SearchLineWrap);
 
   SearchButtonNode.addEventListener('click', () => {
@@ -27,7 +27,7 @@ export function appendTitleAndSearchLineNode(Node: Element) {
 }
 
 function makeTitleText() {
-  const TextNodeInnerText = document.createElement('span'); // 타이틀 텍스트 노드 생성
+  const TextNodeInnerText = document.createElement('span');
   TextNodeInnerText.innerHTML = '친구';
   return TextNodeInnerText;
 }

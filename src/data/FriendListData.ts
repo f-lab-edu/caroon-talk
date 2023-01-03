@@ -1,4 +1,4 @@
-export const FriendListArr = [
+export const FriendListData = [
   {
     id: 1,
     name: '이장훈',

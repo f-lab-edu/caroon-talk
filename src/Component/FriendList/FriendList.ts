@@ -1,4 +1,4 @@
-import { appendTitleAndSearchLineNode } from './AppendTitleAndeSearchLine/AppendTitleAndeSearchLine';
+import { appendTitleAndSearchLineNode } from './AppendTitleAndSearchLine/AppendTitleAndSearchLine';
 import { appendMyProfile } from './AppendMyProfile/AppendMyProfile';
 import { appendFriendList } from './AppendFriendList/AppendFriendList';
 
@@ -15,7 +15,3 @@ export const FriendList = () => {
 
   return MainNode;
 };
-
-/// My Profile
-
-///Friend List

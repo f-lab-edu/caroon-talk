@@ -1,5 +1,5 @@
 import profileImageSrc from 'asset/profile.svg';
-import { FriendListArr } from 'data/FriendListArr';
+import { FriendListData } from 'data/FriendListData';
 
 export function appendFriendList(Node: Element) {
   const FriendListNodeRel = document.createElement('div');
@@ -14,18 +14,16 @@ export function appendFriendList(Node: Element) {
   FriendListTitle.appendChild(FriendListInnerTextSpan);
 
   const FriendListInnerPeopleNum = document.createElement('span');
-  FriendListInnerPeopleNum.innerText = FriendListArr.length.toString();
+  FriendListInnerPeopleNum.innerText = FriendListData.length.toString();
   FriendListInnerPeopleNum.classList.add('friendListTitle_span_number');
   FriendListTitle.appendChild(FriendListInnerPeopleNum);
 
   Node.appendChild(FriendListTitle);
 
-  //make Friend List
-
   const FriendListNode = document.createElement('div');
   FriendListNode.classList.add('friendList');
 
-  FriendListArr.map(el => {
+  FriendListData.map(el => {
     const FriendNode = document.createElement('div');
     FriendNode.classList.add('friendProfile');
 
@@ -48,7 +46,7 @@ export function appendFriendList(Node: Element) {
 
     FriendName.innerText = el.name;
     FriendNode.appendChild(Friendprofile);
-    FriendNode.appendChild(FriendContents); // FriendNode 추가
+    FriendNode.appendChild(FriendContents);
 
     FriendContents.appendChild(FriendName);
     FriendContents.appendChild(FriendStatus);
