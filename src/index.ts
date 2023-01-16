@@ -1,22 +1,21 @@
 import './style/App.scss';
-import { debounce, throttler } from './utils/debouncer';
-import { initialRoutes, historyRouterPush, hashRouterPush } from './router';
+import { initialRoutes, historyRouterPush } from './router';
 import { worker } from './mocks/worker';
-if (process.env.NODE_ENV === 'development') {
-  worker.start();
-}
+
+console.log(process.env.TEST_KEY);
+
+// if (process.env.NODE_ENV === 'development') {
+//   worker.start();
+// }
 
 // app division
 const historyAppDiv = document.querySelector('#history-app');
-const hashAppDiv = document.querySelector('#hash-app');
 
 // Browser History
 
 if (historyAppDiv != null) initialRoutes('history', historyAppDiv);
 
 // Hash History
-
-if (hashAppDiv != null) initialRoutes('hash', hashAppDiv);
 
 window.onload = () => {
   const historyLinker = document.querySelectorAll('img.history');
