@@ -1,5 +1,5 @@
 import profileImageSrc from 'asset/profile.svg';
-import { MyProfileInfo } from 'data/MyProfileInfo';
+import { MyProfileData } from 'data/MyProfileData';
 
 export function appendMyProfile(Node: Element) {
   const MyProfileNode = document.createElement('div');
@@ -17,11 +17,11 @@ export function appendMyProfile(Node: Element) {
 
   const MyProfileStatus = document.createElement('div');
   MyProfileStatus.classList.add('myProfile__name__status');
-  if (MyProfileInfo.status) {
-    MyProfileStatus.innerText = MyProfileInfo.status;
+  if (MyProfileData.status) {
+    MyProfileStatus.innerText = MyProfileData.status;
   }
 
-  MyProfileName.innerText = MyProfileInfo.name;
+  MyProfileName.innerText = MyProfileData.name;
   MyProfileNode.appendChild(MyProfileImgNode);
   MyProfileNode.appendChild(MyProfileContents);
   MyProfileContents.appendChild(MyProfileName);
