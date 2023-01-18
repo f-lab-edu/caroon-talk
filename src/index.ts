@@ -1,34 +1,38 @@
-import './App.scss';
-// router
-import { initialRoutes, historyRouterPush, hashRouterPush } from './router';
+import './style/App.scss';
+import { initialRoutes, historyRouterPush, addEventLinker } from './router';
+import { worker } from './mocks/worker';
+import { appendMenu } from './component/Menu/Menu';
+
+console.log(process.env.TEST_KEY);
+
+if (process.env.NODE_ENV === 'development') {
+  worker.start();
+}
 
 // app division
-const historyAppDiv = document.querySelector('#history-app');
-const hashAppDiv = document.querySelector('#hash-app');
+
+const MainBodyNode = document.querySelector('.main-body');
+
+appendMenu(MainBodyNode);
+
+const historyAppDiv = document.createElement('div');
+historyAppDiv.classList.add('content-box');
+historyAppDiv.id = 'history-app';
+
+MainBodyNode.appendChild(historyAppDiv);
 
 // Browser History
-initialRoutes('history', historyAppDiv);
+if (historyAppDiv != null) initialRoutes('history', historyAppDiv);
 
 // Hash History
-initialRoutes('hash', hashAppDiv);
 
 window.onload = () => {
-  const historyLinker = document.querySelectorAll('span.history');
-  const hashLinker = document.querySelectorAll('a.hash');
+  const historyLinker = document.querySelectorAll('img.history');
 
   historyLinker.forEach(el => {
-    el.addEventListener('click', evt => {
-      const pathName = evt.target.getAttribute('route');
-
-      historyRouterPush(pathName, historyAppDiv);
-    });
-  });
-
-  hashLinker.forEach(el => {
-    el.addEventListener('click', evt => {
-      const pathName = evt.target.getAttribute('route');
-
-      hashRouterPush(pathName, hashAppDiv);
-    });
+    const pathName = el.getAttribute('route');
+    addEventLinker(el, pathName);
   });
 };
+
+export { historyAppDiv };

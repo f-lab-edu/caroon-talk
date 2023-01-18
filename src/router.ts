@@ -1,58 +1,75 @@
-import { Home } from './Home';
-import { Route1 } from './Route1';
-import { Route2 } from './Route2';
+/* eslint-disable no-param-reassign */
+import { FriendList } from './component/FriendList/FriendList';
+import { ChatList } from './component/ChatList/ChatList';
+import { Chat } from './component/Chat/Chat';
+import { historyAppDiv } from '.';
+// import Route2 from './Route2';
 // import Route1
 
-const routes = {
-  '/': Home(),
-  '/route1': Route1(),
-  '/route2': Route2(),
+const routes: RouteType = {
+  '/': Chat(),
+  '/chatList': FriendList(),
+  '/talkSample': ChatList(),
 };
 
-// entry point
-function initialRoutes(mode, el) {
-  renderHTML(el, routes['/']);
+type RouteType = {
+  [key: string]: Element;
+};
 
-  if (mode === 'history') {
-    window.onpopstate = () => renderHTML(el, routes[window.location.pathname]);
-  } else {
-    window.addEventListener('hashchange', () => {
-      return renderHTML(el, getHashRoute());
-    });
+// render
+function renderHTML(el: Element, pathName: string) {
+  const pathArr = pathName.split('/');
+  pathArr.shift();
+  el.innerHTML = '';
+
+  if (
+    pathArr[0] === '' ||
+    pathArr[0] === 'chatList' ||
+    pathArr[0] === 'talkSample'
+  ) {
+    el.appendChild(routes['/' + pathArr[0]]);
   }
-}
-
-// set browser history
-function historyRouterPush(pathName, el) {
-  console.log(pathName, el);
-  window.history.pushState({}, pathName, window.location.origin + pathName);
-  renderHTML(el, routes[pathName]);
 }
 
 // get hash history route
 function getHashRoute() {
-  let route = '/';
+  // 해시 주소 받기
+  // 해시 라우트
+  let route: string | '' = '';
 
   Object.keys(routes).forEach(hashRoute => {
     if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
-      route = routes[hashRoute];
+      route = hashRoute;
     }
   });
 
-  return route;
+  if (route) {
+    return route;
+  }
+  return 'Home';
 }
 
-// set hash history
-function hashRouterPush(pathName, el) {
-  renderHTML(el, getHashRoute());
+// entry point
+function initialRoutes(mode: string, el: Element) {
+  renderHTML(el, '/');
+  window.addEventListener('popstate', () => {
+    renderHTML(el, 'window.location.pathname');
+  });
 }
 
-// render
-function renderHTML(el, route) {
-  console.log(el, route);
-  el.innerHTML = null;
-
-  el.appendChild(route);
+// set browser history
+function historyRouterPush(pathName: string, el: Element) {
+  window.history.pushState({}, pathName, window.location.origin + pathName); // 현제 URL 변경
+  renderHTML(el, pathName); // renderHTML 완료
 }
 
-export { initialRoutes, historyRouterPush, hashRouterPush };
+function addEventLinker(Node: Element, path: string) {
+  Node.addEventListener('click', evt => {
+    const pathName = path;
+    if (pathName != null) {
+      historyRouterPush(pathName, historyAppDiv); // history 변경 시 이벤트
+    }
+  });
+}
+
+export { initialRoutes, historyRouterPush, addEventLinker };

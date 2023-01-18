@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'OTWelcomeRA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.chat__form {
+  padding: 10px 10px 0px 10px;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.chat__form__textarea {
+  display: block;
+  height: 80px;
+  width: 100%;
+  resize: none;
+  border: none;
+  font-size: 16px;
+  font-family: OTWelcomeRA;
+}
+
+.chat__form__textarea:focus {
+  outline: none;
+}
+
+.chat__form__submit {
+  display: inline-block;
+  padding: 10px 20px 10px 20px;
+  outline: none;
+  border: none;
+  background-color: #fee500;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: #999999;
+}
+
+.chat__form__textarea:focus + .chat__form__submit {
+  color: black;
+}
